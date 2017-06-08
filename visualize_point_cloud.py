@@ -52,7 +52,7 @@ class VtkPointCloud:
         self.vtkPolyData.GetCellData().SetScalars(self.vtkDepth)
         self.vtkPolyData.GetCellData().SetActiveScalars('DepthArray')
         point_mapper = vtk.vtkPolyDataMapper()
-        point_mapper.SetInput(self.vtkPolyData)
+        point_mapper.SetInputData(self.vtkPolyData)
         point_mapper.SetColorModeToDefault()
         point_mapper.SetScalarRange(zMin, zMax)
         self.point_vtkActor = vtk.vtkActor()
@@ -61,7 +61,7 @@ class VtkPointCloud:
     def init_planes(self):
         self.vtkPlanes = vtk.vtkPlaneSource()
         plane_mapper = vtk.vtkPolyDataMapper()
-        plane_mapper.SetInput(self.vtkPlanes.GetOutput())
+        plane_mapper.SetInputData(self.vtkPlanes.GetOutput())
         self.plane_vtkActor = vtk.vtkActor()
         self.plane_vtkActor.SetMapper(plane_mapper)
 
